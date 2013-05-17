@@ -13,16 +13,14 @@ This agent makes an assumption or two about how you set up NRPE, in your nrpe.cf
 
 ```
 include_dir=/etc/nagios/nrpe.d/
-```
 
-You should now set your commands up one file per check command, for example /etc/nagios/nrpe.d/check_load.cfg:
+All files *.cfg files in your include directory will be searched for the command you're asking MCollective to execute.
 
-```
 command[check_load]=/usr/lib64/nagios/plugins/check_load -w 1.5,1.5,1.5 -c 2,2,2
-```
+
 
 With this setup the agent will now be able to find your check_load command.
-I’ve added a Puppet define and template to help you create checks like this [on GitHub](http://github.com/puppetlabs/mcollective-plugins/tree/master/agent/nrpe/puppet/)
+A Puppet define and template to help you create checks like this [on GitHub](http://github.com/puppetlabs/mcollective-plugins/tree/master/agent/nrpe/puppet/)
 
 ##Agent Installation
 Follow the basic [plugin install guide](http://projects.puppetlabs.com/projects/mcollective-plugins/wiki/InstalingPlugins)
